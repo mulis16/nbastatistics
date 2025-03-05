@@ -3,6 +3,6 @@ playwright-report/
 test-results/
 **/test-results/
 **/playwright-report/
-
-# Node modules
+e2e/data/players.json
+e2e/.DS_Store
 node_modules/
