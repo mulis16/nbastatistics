@@ -33,6 +33,8 @@ export class NbaPlayersPage {
   }
 
   async checkPlayerNameToMatchWebsite(playerName: string) {
+    // Dante Exum's name is spelled differently on the website than in the data file
+    // and needs to be adjusted since on the website Dante Exum is not found
     if (playerName === "Dante Exum") {
       playerName = "Danté Exum";
     }
