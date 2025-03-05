@@ -8,7 +8,7 @@ const config: PlaywrightTestConfig = {
   },
   use: {
     browserName: "chromium",
-    headless: false,
+    headless: true,
     viewport: { width: 1280, height: 720 },
     video: "retain-on-failure",
     screenshot: "on",
