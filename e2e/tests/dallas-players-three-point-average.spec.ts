@@ -9,16 +9,18 @@ const dataPath = path.join(__dirname, "./../data/players.json");
 let players: Player[] = [];
 
 try {
-  players = JSON.parse(fs.readFileSync(dataPath, "utf8"));
-  if (!players || players.length === 0) {
-    throw new Error("No players found in data file");
+  if (fs.existsSync(dataPath)) {
+    players = JSON.parse(fs.readFileSync(dataPath, "utf8"));
+    if (players && players.length > 0) {
+      console.log(`Found ${players.length} players in data file`);
+    } else {
+      throw new Error("Players data file exists but contains no players");
+    }
+  } else {
+    throw new Error("Players data file does not exist");
   }
 } catch (error) {
   console.error(`Failed to load players data: ${error}`);
-  // Will fail test discovery if no players data read
-  throw new Error(
-    "Players data not found. Make sure global setup has run successfully"
-  );
 }
 
 for (const player of players) {

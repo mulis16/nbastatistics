@@ -5,20 +5,31 @@ import { fetchPlayersData } from "./helpers/fetchPlayersData";
 async function globalSetup() {
   console.log("Fetching players data in global setup...");
 
-  // Fetch player data
-  const players = await fetchPlayersData();
+  try {
+    const players = await fetchPlayersData();
+    if (!players) {
+      throw new Error("Players data is null or undefined");
+    }
 
-  // Ensure directory exists
-  const dataDir = path.join(__dirname, "data");
-  if (!fs.existsSync(dataDir)) {
-    fs.mkdirSync(dataDir, { recursive: true });
+    if (players.length === 0) {
+      throw new Error("No players were fetched. The players array is empty");
+    }
+
+    console.log(`Successfully fetched ${players.length} players`);
+
+    const dataDir = path.join(__dirname, "data");
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true });
+    }
+
+    const dataPath = path.join(dataDir, "players.json");
+    fs.writeFileSync(dataPath, JSON.stringify(players, null, 2));
+
+    console.log(`Players data saved to ${dataPath}`);
+  } catch (error) {
+    console.error(`Global setup failed: ${error}`);
+    throw error;
   }
-
-  // Save data to file
-  const dataPath = path.join(dataDir, "players.json");
-  fs.writeFileSync(dataPath, JSON.stringify(players, null, 2));
-
-  console.log(`Players data saved to ${dataPath}`);
 }
 
 export default globalSetup;
