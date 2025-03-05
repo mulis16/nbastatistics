@@ -46,11 +46,9 @@ for (const player of players) {
     await playerDetailsPage.waitForStats();
     const average = await playerDetailsPage.getThreePointersAverage();
 
-    await expect
-      .soft(
-        average,
-        `${displayName}'s 3-point average (${average}) should be greater than or equal to 1`
-      )
-      .toBeGreaterThanOrEqual(1);
+    await expect(
+      average,
+      `${displayName}'s 3-point average (${average}) should be greater than or equal to 1`
+    ).toBeGreaterThanOrEqual(1);
   });
 }

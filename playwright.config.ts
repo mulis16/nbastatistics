@@ -16,7 +16,7 @@ const config: PlaywrightTestConfig = {
   },
   reporter: [["list"], ["html", { open: "never" }]],
   /* Retry on CI only */
-  retries: process.env.CI ? 1 : 0,
+  retries: 0,
   workers: 3,
   fullyParallel: true,
   globalSetup: "./e2e/global-setup.ts",
