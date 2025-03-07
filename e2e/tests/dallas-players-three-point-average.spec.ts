@@ -7,12 +7,12 @@ import path from "path";
 
 const dataPath = path.join(__dirname, "./../data/players.json");
 let players: Player[] = [];
-
+let playersLoaded = false;
 try {
   if (fs.existsSync(dataPath)) {
     players = JSON.parse(fs.readFileSync(dataPath, "utf8"));
     if (players && players.length > 0) {
-      console.log(`Found ${players.length} players in data file`);
+      playersLoaded = true;
     } else {
       throw new Error("Players data file exists but contains no players");
     }
