@@ -37,10 +37,7 @@ for (const player of players) {
     );
 
     await nbaPlayersPage.navigate();
-    await expect(nbaPlayersPage.leagueRosterHeading).toBeVisible();
-    await expect(nbaPlayersPage.playersListTable).toBeVisible();
-    await expect(nbaPlayersPage.searchInput).toBeVisible();
-    await expect(nbaPlayersPage.teamDropdown).toBeVisible();
+    await nbaPlayersPage.assertFieldsVisility();
 
     await nbaPlayersPage.searchPlayer(displayName);
     await nbaPlayersPage.clickPlayerLink(displayName);

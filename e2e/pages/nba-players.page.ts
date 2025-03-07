@@ -1,4 +1,4 @@
-import { Locator, Page } from "@playwright/test";
+import { expect, Locator, Page } from "@playwright/test";
 
 export class NbaPlayersPage {
   private readonly page: Page;
@@ -25,6 +25,13 @@ export class NbaPlayersPage {
 
   async navigate() {
     await this.page.goto(this.url, { waitUntil: "domcontentloaded" });
+  }
+
+  async assertFieldsVisility() {
+    await expect(this.leagueRosterHeading).toBeVisible();
+    await expect(this.playersListTable).toBeVisible();
+    await expect(this.searchInput).toBeVisible();
+    await expect(this.teamDropdown).toBeVisible();
   }
 
   async searchPlayer(playerName: string) {
