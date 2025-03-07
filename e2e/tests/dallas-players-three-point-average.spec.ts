@@ -50,7 +50,7 @@ for (const player of players) {
 
     await expect(
       average,
-      `${displayName}'s 3-point average (${average}) should be greater than or equal to 1`
+      `${displayName}'s 3-point average for the last 5 games is (${average}) should be greater than or equal to 1`
     ).toBeGreaterThanOrEqual(1);
   });
 }

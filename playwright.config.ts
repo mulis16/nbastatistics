@@ -2,7 +2,7 @@ import { PlaywrightTestConfig } from "@playwright/test";
 
 const config: PlaywrightTestConfig = {
   testDir: "./e2e/tests",
-  timeout: 120000,
+  timeout: 35000,
   expect: {
     timeout: 5000,
   },
@@ -15,7 +15,6 @@ const config: PlaywrightTestConfig = {
     trace: "retain-on-failure",
   },
   reporter: [["list"], ["html", { open: "never" }]],
-  /* Retry on CI only */
   retries: 0,
   workers: 3,
   fullyParallel: true,

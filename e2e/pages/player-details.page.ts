@@ -35,7 +35,7 @@ export class PlayerDetailsPage {
     if (PlayerDetailsPage.threePointersColumnIndex === null) {
       const headers = await this.tableHeaderCells.allTextContents();
       PlayerDetailsPage.threePointersColumnIndex =
-        headers.findIndex((header) => header.trim() === "3PM") + 1; // +1 for nth-child
+        headers.findIndex((header) => header.trim() === "3PM") + 1;
     }
 
     const threePMValues = await this.getColumnCells(

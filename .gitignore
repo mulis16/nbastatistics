@@ -1,8 +1,7 @@
-# Playwright specific
 playwright-report/
 test-results/
 **/test-results/
 **/playwright-report/
-e2e/data/players.json
+e2e/data/
 e2e/.DS_Store
 node_modules/
